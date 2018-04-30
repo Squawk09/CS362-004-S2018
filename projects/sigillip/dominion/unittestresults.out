@@ -18,10 +18,6 @@ Assertion Failed: Other players didnt draw from top of their deck
 CARD 3 TEST FAILED
 
 ----------Testing Card 4, Mine------------
-Assertion Failed: Allowed player to take too valuable card
-expected count 2
-resuilt 0
-count is 0
 Assertion Failed: Incorrect number of cards trashed
 Assertion Failed: Most Recent Card sent to trash not card selected
 Assertion Failed: Card selected not added to hand

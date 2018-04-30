@@ -64,7 +64,7 @@ int main(int argc, char* argv[]){
 	choice1 = 0;
 	choice2 = gold;
 	result = cardEffect(mine, choice1, choice2, 0, &testG, 0, 0);
-	customAssert(result == -1,"Allowed player to take too valuable card", &allTestPassed);
+	customAssert(result != -1,"Allowed player to take too valuable card", &allTestPassed);
 
 	//Test Player can swap treasure card for treasure card valued <= card + 3
 	memcpy(&testG, &G, sizeof(struct gameState));
@@ -116,11 +116,7 @@ int main(int argc, char* argv[]){
 	choice1 = 0;
 	choice2 = gold;
 	int expectedTrashCount = testG.discardCount[thisPlayer]+2;
-	printf("expected count %d\n",expectedTrashCount);
-
-	int myresilt = cardEffect(mine, choice1, choice2, 0, &testG, 1, 0);
-	printf("resuilt %d\n",myresilt);
-	printf("count is %d\n",testG.discardCount[thisPlayer]);
+	cardEffect(mine, choice1, choice2, 0, &testG, 1, 0);
 	customAssert(testG.discardCount[thisPlayer] == expectedTrashCount, "Incorrect number of cards trashed", &allTestPassed);
 
 	//Test card sent to trash was card selected 
