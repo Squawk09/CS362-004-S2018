@@ -44,9 +44,7 @@ int main(int argc, char* argv[])
 	fflush(stdout);
 
 	srand(time(NULL));
-	int i, n, p;
-
-	int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
+	int i, n;
 
  	struct gameState G;
 

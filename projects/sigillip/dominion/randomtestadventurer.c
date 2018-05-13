@@ -19,12 +19,14 @@ void customAssert(int expression, char* errorMessage){
         }
 }
 
+
 int checkAdventurer(int p, struct gameState *post) {
 
 	struct gameState pre;
 	memcpy(&pre,post,sizeof(struct gameState));
 //
-	int r = adventurerEffect(0, post, p,0); 
+	int r = -1;
+	r =  adventurerEffect(0, post, p,0); 
 
 //	custom assert test values that should not change 
 	customAssert(r == 0, "Function Did not return 0");
@@ -66,11 +68,9 @@ int checkAdventurer(int p, struct gameState *post) {
 int main(int argc, char* argv[])
 {
 	srand(time(NULL));
-	int i, n, p;
+	int i, n;
 
-	int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
-
- 	struct gameState G;
+	struct gameState G;
 
  	for(n = 0; n < 200; n++){
 		//randomize everything 
