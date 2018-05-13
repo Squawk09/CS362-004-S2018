@@ -29,7 +29,6 @@ runtests: testDrawCard
 	cat dominion.c.gcov >> unittestresult.out
 
 runUnitTests: cardtest1.c dominion.o rngs.o
-	echo "Running unit tests:" > unittestresults.out
 	gcc -o cardtest1 cardtest1.c dominion.o rngs.o -g $(CFLAGS)
 	gcc -o cardtest2 cardtest2.c dominion.o rngs.o -g $(CFLAGS)
 	gcc -o cardtest3 cardtest3.c dominion.o rngs.o -g $(CFLAGS)
@@ -49,6 +48,16 @@ runUnitTests: cardtest1.c dominion.o rngs.o
 	unittest3 >> unittestresults.out
 	unittest4 >> unittestresults.out
 	gcov -f -b dominion.c >> unittestresults.out
+
+runRandomTests: dominion.o rngs.o
+	gcc -o randomtestadventurer randomtestadventurer.c dominion.o rngs.o -g $(CFLAGS)
+	gcc -o randomtestcard1 randomtestcard1.c dominion.o rngs.o -g $(CFLAGS)
+	gcc -o randomtestcard2 randomtestcard2.c dominion.o rngs.o -g $(CFLAGS)
+	randomtestcard2 >> randomcard1results.out
+	randomtestcard1 >> randomcard2results.out
+	randomtestadventurer >> randomadventurerresults.out
+	gcov -f -b dominion.c >> randomtestcoverage.out
+
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
